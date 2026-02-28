@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Projects – ARCTISER</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#fff; --text:#111; --muted:#555; --line:#eaeaea;
+      --max: 980px;
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+    .wrap{max-width:var(--max);margin:0 auto;padding:28px 20px}
+
+    header{border-bottom:1px solid var(--line)}
+    .top{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:2px 0}
+    .brand{display:flex;flex-direction:column;gap:2px}
+    .tagline{color:var(--muted);font-size:13px;line-height:1.4}
+    .miniLogo{height:72px;width:auto;display:block}
+
+    .nav a{
+      color:var(--text);
+      text-decoration:none;
+      border:1px solid var(--line);
+      padding:10px 12px;
+      border-radius:12px;
+      font-weight:500;
+      font-size:14px;
+    }
+    .nav a:hover{background:#f7f7f7}
+
+    main{padding:26px 0 30px}
+    h1{font-size:28px;margin:0 0 10px;font-weight:600;letter-spacing:.01em}
+    p{margin:0 0 12px;color:var(--muted);line-height:1.7}
+
+    .card{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      background:#fff;
+      margin-top:14px;
+    }
+    .card h2{margin:0 0 10px;font-size:16px;font-weight:600;color:var(--text)}
+    .meta{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:10px;color:var(--muted);font-size:13px;line-height:1.6}
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:6px 10px;
+      font-size:12px;
+      color:var(--muted);
+      background:#fff;
+    }
+
+    ul{margin:10px 0 0 20px;color:var(--muted);line-height:1.7}
+    li{margin:6px 0}
+
+    footer{border-top:1px solid var(--line);padding:18px 0;color:var(--muted);font-size:13px;line-height:1.6}
+    footer a{color:inherit}
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <div class="top">
+        <div class="brand">
+          <img src="assets/arctiser-logo.png" alt="ARCTISER logo" class="miniLogo">
+          <span class="tagline">Advancing evidence-based understanding of society.</span>
+        </div>
+        <div class="nav">
+          <a href="/">Home</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <h1>Projects</h1>
+      <p>
+        Projects reflect active work in development, including scoping, document-based data collection,
+        and the preparation of publishable outputs. Completed outputs appear under Publications and Archive.
+      </p>
+
+      <div class="card">
+        <div class="meta" style="margin-top:0">
+          <span class="tag">Flagship (In Progress)</span>
+          <span class="tag">Comparative Education</span>
+          <span class="tag">Chemistry · Biology · Pharmaceutics</span>
+        </div>
+
+        <h2>The Bachelor Burden</h2>
+        <p>
+          ARCTISER is initiating a comparative study of bachelor-level science programs in Chemistry, Biology,
+          and Pharmaceutics across Norway, Croatia, Serbia, Germany, Czechia, Spain, the United Kingdom, and France.
+        </p>
+
+        <p>
+          The project investigates structural intensity in degree design, including:
+        </p>
+
+        <ul>
+          <li>Number of required pass-units (courses/modules)</li>
+          <li>Segmentation of core scientific disciplines (e.g., multi-part course sequences)</li>
+          <li>Laboratory requirements and practical training intensity</li>
+          <li>Assessment density and retake structure (where documented)</li>
+          <li>Timing of specialization within the degree</li>
+        </ul>
+
+        <p style="margin-top:12px">
+          The initial phase is a pilot comparison (Norway vs Croatia) to validate methodology before scaling
+          to a broader multi-country dataset.
+        </p>
+
+        <div class="meta">
+          <div><strong>Status:</strong> Pilot design &amp; source mapping</div>
+          <div><strong>Method:</strong> Manual curriculum document extraction (pre-digital style)</div>
+          <div><strong>Contact:</strong> <a href="mailto:research@arctiser.no">research@arctiser.no</a></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Next Projects</h2>
+        <p>
+          Additional project proposals will be added as they enter active development, with clearly defined
+          scope, sources, and planned deliverables.
+        </p>
+        <div class="meta">
+          <div><strong>Planned outputs:</strong> policy briefs, analytical reports, archived PDFs</div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>ARCTISER – Arctic Institute for Independent Social Research</div>
+      <div>Registered in Norway · Organization No: 937 265 212 · <a href="mailto:research@arctiser.no">research@arctiser.no</a></div>
+    </div>
+  </footer>
+</body>
+</html>
