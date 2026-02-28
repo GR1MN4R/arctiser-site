@@ -3,22 +3,460 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ARCTISER</title>
+  <title>ARCTISER – Arctic Institute for Independent Social Research</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
   <style>
-    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#fff;color:#111}
-    main{min-height:100vh;display:flex;align-items:center;justify-content:center}
-    .box{text-align:center;max-width:900px;padding:48px}
-    h1{font-size:48px;margin:0 0 10px;font-weight:600;letter-spacing:.02em}
-    p{margin:0;color:#555;line-height:1.6}
+    :root{
+      --bg:#fff;
+      --text:#111;
+      --muted:#555;
+      --line:#eaeaea;
+      --shadow: 0 18px 60px rgba(0,0,0,.12);
+      --radius: 22px;
+      --radiusBtn: 14px;
+      --max: 1100px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+
+    /* Page layout */
+    .page{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+
+    .wrap{
+      width:100%;
+      max-width:var(--max);
+      margin:0 auto;
+      padding:32px 20px;
+    }
+
+    /* Center “canvas” (logo + buttons + featured) */
+    .hero{
+      flex:1;
+      display:flex;
+      align-items:center;
+    }
+
+    .heroInner{
+      width:100%;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:22px;
+      padding:34px 0 20px;
+    }
+
+    /* Logo block */
+    .logoBlock{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:10px;
+      text-align:center;
+    }
+
+    /* Replace this with your PNG/SVG later */
+    .logoText{
+      font-size: clamp(44px, 7vw, 82px);
+      font-weight:600;
+      letter-spacing:.02em;
+      line-height:1;
+      margin:0;
+    }
+
+    .sub{
+      margin:0;
+      font-size: 16px;
+      color:var(--muted);
+      line-height:1.6;
+    }
+
+    /* Nav buttons */
+    .nav{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:10px;
+      margin-top:6px;
+    }
+
+    .nav button{
+      appearance:none;
+      border:1px solid var(--text);
+      background:transparent;
+      color:var(--text);
+      padding:10px 14px;
+      border-radius:var(--radiusBtn);
+      font: 500 14px/1 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      cursor:pointer;
+      transition: transform .08s ease, background .18s ease, color .18s ease;
+    }
+
+    .nav button:hover{
+      background:var(--text);
+      color:#fff;
+    }
+    .nav button:active{
+      transform: translateY(1px);
+    }
+
+    /* Current research block */
+    .featured{
+      width:min(860px, 100%);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:18px 18px;
+      background:#fff;
+    }
+
+    .featuredTop{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:16px;
+      border-bottom:1px solid var(--line);
+      padding-bottom:12px;
+      margin-bottom:12px;
+    }
+
+    .featuredLabel{
+      font-size:13px;
+      font-weight:600;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin:0;
+    }
+
+    .featuredMeta{
+      font-size:13px;
+      color:var(--muted);
+      margin:0;
+      white-space:nowrap;
+    }
+
+    .featuredTitle{
+      margin:0 0 6px;
+      font-size:18px;
+      font-weight:600;
+      letter-spacing:.01em;
+      line-height:1.3;
+    }
+
+    .featuredAbstract{
+      margin:0 0 12px;
+      color:var(--muted);
+      line-height:1.65;
+      font-size:15px;
+    }
+
+    .featuredActions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .linkBtn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border:1px solid var(--line);
+      padding:10px 12px;
+      border-radius:12px;
+      text-decoration:none;
+      color:var(--text);
+      font-weight:500;
+      font-size:14px;
+      transition: background .18s ease, border-color .18s ease;
+    }
+    .linkBtn:hover{
+      background:#f7f7f7;
+      border-color:#ddd;
+    }
+
+    /* Footer */
+    footer{
+      border-top:1px solid var(--line);
+      padding:18px 0;
+    }
+    .footerGrid{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px 22px;
+      justify-content:center;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.6;
+      text-align:center;
+    }
+    .footerGrid a{color:inherit}
+
+    /* Modal overlay */
+    .overlay{
+      position:fixed;
+      inset:0;
+      background: rgba(0,0,0,.35);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:22px;
+      z-index:1000;
+    }
+    .overlay.open{display:flex}
+
+    .modal{
+      width:min(820px, 100%);
+      background:#fff;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      border: 1px solid #dcdcdc; /* outline echo */
+      overflow:hidden;
+    }
+
+    .modalHeader{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:18px;
+      padding:18px 18px 12px;
+      border-bottom:1px solid var(--line);
+    }
+    .modalTitle{
+      margin:0;
+      font-size:18px;
+      font-weight:600;
+      letter-spacing:.01em;
+    }
+    .closeBtn{
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius:12px;
+      padding:8px 10px;
+      cursor:pointer;
+      font-weight:600;
+    }
+    .closeBtn:hover{background:#f7f7f7}
+
+    .modalBody{
+      padding:16px 18px 18px;
+      color:var(--muted);
+      line-height:1.7;
+      font-size:15px;
+    }
+
+    .modalActions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      padding-top:10px;
+    }
+
+    /* Small screens */
+    @media (max-width: 520px){
+      .featuredTop{flex-direction:column; align-items:flex-start}
+      .featuredMeta{white-space:normal}
+      .nav button{width:100%}
+      .featured{padding:16px}
+    }
   </style>
 </head>
+
 <body>
-  <main>
-    <div class="box">
-      <h1>ARCTISER</h1>
-      <p>Arctic Institute for Independent Social Research</p>
+  <div class="page">
+    <div class="hero">
+      <div class="wrap">
+        <div class="heroInner">
+
+          <div class="logoBlock">
+            <!-- Replace with <img src="assets/arctiser-logo.png" alt="ARCTISER logo" style="height:22vh;max-height:240px;width:auto;"> when you upload -->
+            <h1 class="logoText">ARCTISER</h1>
+            <p class="sub">Arctic Institute for Independent Social Research</p>
+          </div>
+
+          <nav class="nav" aria-label="Primary">
+            <button data-modal="about">About</button>
+            <button data-modal="research">Research</button>
+            <button data-modal="projects">Projects</button>
+            <button data-modal="publications">Publications</button>
+            <button data-modal="governance">Governance</button>
+            <button data-modal="funding">Funding &amp; Partnerships</button>
+            <button data-modal="contact">Contact</button>
+          </nav>
+
+          <!-- Current Research (Option A placeholder) -->
+          <section class="featured" aria-label="Current research">
+            <div class="featuredTop">
+              <p class="featuredLabel">Current Research</p>
+              <p class="featuredMeta"><span id="crType">Policy Brief</span> · <span id="crDate">2026-02-28</span></p>
+            </div>
+
+            <h2 class="featuredTitle" id="crTitle">Placeholder title – first ARCTISER publication</h2>
+            <p class="featuredAbstract" id="crAbstract">
+              This preview block will always show the latest publication (Option A). Once we add publications.json and wire the JS,
+              it will auto-update.
+            </p>
+
+            <div class="featuredActions">
+              <a class="linkBtn" id="crPdf" href="#" target="_blank" rel="noopener">Open PDF</a>
+              <a class="linkBtn" id="crPage" href="/publications.html">Read full page</a>
+              <a class="linkBtn" href="/archive.html">Archive</a>
+            </div>
+          </section>
+
+        </div>
+      </div>
     </div>
-  </main>
+
+    <footer>
+      <div class="wrap">
+        <div class="footerGrid">
+          <div>ARCTISER – Arctic Institute for Independent Social Research</div>
+          <div>Registered in Norway</div>
+          <div>Organization No: 937 265 212</div>
+          <div><a href="mailto:research@arctiser.no">research@arctiser.no</a></div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Modals -->
+  <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal" role="document">
+      <div class="modalHeader">
+        <h3 class="modalTitle" id="modalTitle">Title</h3>
+        <button class="closeBtn" id="closeBtn" aria-label="Close">✕</button>
+      </div>
+      <div class="modalBody" id="modalBody">
+        Body
+        <div class="modalActions" id="modalActions"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Basic modal system (content is placeholder; we’ll fill with institutional text next)
+    const overlay = document.getElementById('overlay');
+    const closeBtn = document.getElementById('closeBtn');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+    const modalActions = document.getElementById('modalActions');
+
+    const MODALS = {
+      about: {
+        title: "About",
+        body: `
+          ARCTISER is a Norwegian registered association (Forening), registered with the Brønnøysund Register Centre under
+          organization number <strong>937 265 212</strong>.
+          <br><br>
+          This page will hold the institute mission, mandate, and institutional positioning in an EU-compatible tone.
+        `,
+        links: [{ label: "Go to About page", href: "/about.html" }]
+      },
+      research: {
+        title: "Research Areas",
+        body: `
+          This popup will list ARCTISER’s primary research pillars and the latest items tagged to each pillar.
+          <br><br>
+          Keep this concise; deeper content belongs on the dedicated page.
+        `,
+        links: [{ label: "Go to Research page", href: "/research.html" }]
+      },
+      projects: {
+        title: "Projects",
+        body: `
+          This popup will show current / in-development projects and consortium readiness.
+        `,
+        links: [{ label: "Go to Projects page", href: "/projects.html" }]
+      },
+      publications: {
+        title: "Publications",
+        body: `
+          This popup will show the latest publications (3–6) with title/date/type/abstract and direct PDF access.
+        `,
+        links: [
+          { label: "Go to Publications page", href: "/publications.html" },
+          { label: "Open Archive", href: "/archive.html" }
+        ]
+      },
+      governance: {
+        title: "Governance",
+        body: `
+          This popup will list board roles and short integrity statements (ethics, COI, research integrity).
+        `,
+        links: [{ label: "Go to Governance page", href: "/governance.html" }]
+      },
+      funding: {
+        title: "Funding & Partnerships",
+        body: `
+          This popup will outline collaboration readiness and funding frameworks (Horizon Europe / Interreg, etc.).
+        `,
+        links: [{ label: "Go to Funding page", href: "/funding.html" }]
+      },
+      contact: {
+        title: "Contact",
+        body: `
+          For research, partnerships, and institutional correspondence:
+          <br><br>
+          <strong><a href="mailto:research@arctiser.no">research@arctiser.no</a></strong>
+          <br><br>
+          We can add a Netlify form later (no backend needed).
+        `,
+        links: [{ label: "Go to Contact page", href: "/contact.html" }]
+      }
+    };
+
+    function openModal(key){
+      const m = MODALS[key];
+      if(!m) return;
+
+      modalTitle.textContent = m.title;
+      modalBody.innerHTML = m.body + '<div class="modalActions" id="modalActions"></div>';
+      const actions = modalBody.querySelector('#modalActions');
+      actions.innerHTML = "";
+
+      (m.links || []).forEach(l=>{
+        const a = document.createElement('a');
+        a.className = 'linkBtn';
+        a.href = l.href;
+        a.textContent = l.label;
+        actions.appendChild(a);
+      });
+
+      overlay.classList.add('open');
+    }
+
+    function closeModal(){
+      overlay.classList.remove('open');
+    }
+
+    document.querySelectorAll('[data-modal]').forEach(btn=>{
+      btn.addEventListener('click', ()=> openModal(btn.dataset.modal));
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+
+    overlay.addEventListener('click', (e)=>{
+      if(e.target === overlay) closeModal();
+    });
+
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape') closeModal();
+    });
+  </script>
 </body>
 </html>
