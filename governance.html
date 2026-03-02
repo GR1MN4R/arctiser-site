@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Governance – ARCTISER</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#fff; --text:#111; --muted:#555; --line:#eaeaea;
+      --max: 980px;
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+    a{color:inherit;text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--max);margin:0 auto;padding:28px 20px}
+
+    /* CANONICAL HEADER STANDARD (same as Research/About) */
+    .top{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:2px 0}
+    .brand{display:flex;flex-direction:column;gap:2px}
+    .miniLogo{height:72px;width:auto;display:block}
+
+    .nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end}
+    .nav a{
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:8px 12px;
+      font-weight:500;
+      color:var(--text);
+      background:#fff;
+    }
+    .nav a[aria-current="page"]{
+      border-color:#111;
+      text-decoration:none;
+    }
+
+    h1{font-size:28px;line-height:1.15;margin:18px 0 6px}
+    .sub{color:var(--muted);margin:0 0 18px}
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:14px;
+      margin-top:14px;
+    }
+    @media (min-width: 900px){
+      .grid{grid-template-columns:1fr 1fr}
+    }
+
+    .card{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:16px;
+      background:#fff;
+    }
+    .card h2{font-size:16px;margin:0 0 8px}
+    .card p{margin:0 0 10px;color:var(--muted);line-height:1.5}
+    .card ul{margin:0;padding-left:18px;color:var(--muted);line-height:1.55}
+    .card li{margin:6px 0}
+
+    .divider{height:1px;background:var(--line);margin:18px 0}
+
+    .foot{
+      margin-top:22px;
+      padding-top:14px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.45;
+    }
+    .pill{
+      display:inline-block;
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:6px 10px;
+      font-size:12px;
+      color:var(--muted);
+      margin:6px 6px 0 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <header class="top">
+      <div class="brand">
+        <a href="index.html" title="Back to home">
+          <!-- Use the same exact logo file you use on Research/About -->
+          <img class="miniLogo" src="assets/arctiser-logo.png" alt="ARCTISER logo">
+        </a>
+      </div>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="projects.html">Projects</a>
+        <a href="archive.html">Archive</a>
+        <a href="about.html">About</a>
+        <a href="governance.html" aria-current="page">Governance</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Governance</h1>
+      <p class="sub">
+        How ARCTISER is organized, how decisions are made, and how integrity, transparency, and independence are protected.
+      </p>
+
+      <div class="grid">
+
+        <section class="card">
+          <h2>Organization</h2>
+          <p>
+            ARCTISER – Arctic Institute for Independent Social Research is organized as a non-profit association with a
+            defined purpose, statutes (vedtekter), and a board responsible for oversight.
+          </p>
+          <div class="pill">Non-profit association</div>
+          <div class="pill">Independent research focus</div>
+          <div class="pill">Norway (Brønnøysund)</div>
+        </section>
+
+        <section class="card">
+          <h2>Registration</h2>
+          <p>
+            Registered organization number:
+          </p>
+          <p style="margin:0;font-weight:600;color:#111;">
+            937 265 212
+          </p>
+          <p style="margin-top:10px;">
+            Official records and filings are maintained in the Norwegian registry (Brønnøysundregistrene).
+          </p>
+        </section>
+
+        <section class="card">
+          <h2>Board and roles</h2>
+          <p>
+            The board provides oversight and ensures ARCTISER follows its purpose, ethical standards, and statutory obligations.
+          </p>
+          <ul>
+            <li><strong>Chair:</strong> [Name]</li>
+            <li><strong>Board member:</strong> [Name]</li>
+            <li><strong>Board member:</strong> [Name]</li>
+            <li><strong>Day-to-day operations:</strong> [Role / Name]</li>
+          </ul>
+          <p style="margin-top:10px;">
+            (Replace placeholders when you want—this page is structured so you can drop in names safely.)
+          </p>
+        </section>
+
+        <section class="card">
+          <h2>Decision-making</h2>
+          <p>
+            Decisions follow the association’s statutes and documented routines to reduce ambiguity and protect independence.
+          </p>
+          <ul>
+            <li>Board meetings are documented (agenda + minutes).</li>
+            <li>Major changes (purpose, governance, finances) require formal approval.</li>
+            <li>Public-facing statements and publications follow review rules.</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>Integrity and independence</h2>
+          <p>
+            ARCTISER aims to protect research integrity by separating funding from conclusions and documenting methodology.
+          </p>
+          <ul>
+            <li>No sponsor may influence research conclusions.</li>
+            <li>Methodology and limitations are disclosed in publications.</li>
+            <li>Conflicts of interest are declared.</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>Conflicts of interest</h2>
+          <p>
+            Anyone involved in governance or research must disclose relevant interests that could bias decisions or results.
+          </p>
+          <ul>
+            <li>Financial interests (contracts, ownership, paid roles)</li>
+            <li>Close personal relationships relevant to a decision</li>
+            <li>Prior involvement that could compromise neutrality</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>Transparency</h2>
+          <p>
+            ARCTISER will publish key documents and updates as part of normal operations.
+          </p>
+          <ul>
+            <li>Statutes (vedtekter) and governance overview</li>
+            <li>High-level funding sources (when relevant)</li>
+            <li>Publications and archived research PDFs</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>Complaints and corrections</h2>
+          <p>
+            If a publication contains errors, ARCTISER will document and publish corrections transparently.
+          </p>
+          <ul>
+            <li><strong>Corrections:</strong> logged on the relevant research page / PDF entry</li>
+            <li><strong>Complaints:</strong> handled by board review when necessary</li>
+          </ul>
+          <p style="margin-top:10px;">
+            Contact: <strong>[your-email@domain]</strong>
+          </p>
+        </section>
+
+      </div>
+
+      <div class="divider"></div>
+
+      <section class="card">
+        <h2>Data protection and privacy</h2>
+        <p>
+          ARCTISER aims to minimize personal data collection. If contact forms, newsletters, or analytics are used,
+          a simple privacy notice will be provided describing what is collected and why.
+        </p>
+        <ul>
+          <li>Data minimization by default</li>
+          <li>Access limited to operational need</li>
+          <li>Retention only as long as necessary</li>
+        </ul>
+      </section>
+
+      <footer class="foot">
+        <div><strong>ARCTISER – Arctic Institute for Independent Social Research</strong></div>
+        <div>Org. no. 937 265 212 • Norway</div>
+      </footer>
+    </main>
+
+  </div>
+</body>
+</html>
