@@ -11,77 +11,138 @@
 
   <style>
     :root{
-      --bg:#fff; --text:#111; --muted:#555; --line:#eaeaea;
+      --bg:#e6e2dd;
+      --text:#111;
+      --muted:#555;
+      --line: rgba(0,0,0,.12);
+      --card: rgba(255,255,255,.18);
       --max: 980px;
       --radius: 18px;
     }
+
     *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
     a{color:inherit;text-decoration:none}
     a:hover{text-decoration:underline}
-    .wrap{max-width:var(--max);margin:0 auto;padding:28px 20px}
 
-    /* CANONICAL HEADER STANDARD (same as Research/About) */
-    .top{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:2px 0}
-    .brand{display:flex;flex-direction:column;gap:2px}
-    .miniLogo{height:72px;width:auto;display:block}
+    /* Same "feel" as About: roomy, single-column */
+    .wrap{max-width:var(--max);margin:0 auto;padding:18px 20px 30px}
 
-    .nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end}
-    .nav a{
-      border:1px solid var(--line);
-      border-radius:999px;
-      padding:8px 12px;
-      font-weight:500;
-      color:var(--text);
-      background:#fff;
-    }
-    .nav a[aria-current="page"]{
-      border-color:#111;
-      text-decoration:none;
-    }
-
-    h1{font-size:28px;line-height:1.15;margin:18px 0 6px}
-    .sub{color:var(--muted);margin:0 0 18px}
-
-    .grid{
-      display:grid;
-      grid-template-columns:1fr;
+    /* Header: logo left, simple buttons right (like About screenshot) */
+    .top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
       gap:14px;
-      margin-top:14px;
+      padding:6px 0 14px;
+      border-bottom:1px solid rgba(0,0,0,.08);
     }
-    @media (min-width: 900px){
-      .grid{grid-template-columns:1fr 1fr}
+    .miniLogo{
+      height:64px; /* avoids squish, width auto */
+      width:auto;
+      display:block;
     }
 
+    .actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    .btn{
+      border:1px solid rgba(0,0,0,.18);
+      background:rgba(255,255,255,.20);
+      border-radius:999px;
+      padding:10px 14px;
+      font-weight:500;
+      line-height:1;
+      cursor:pointer;
+      text-decoration:none;
+      display:inline-block;
+    }
+    .btn:hover{background:rgba(255,255,255,.30);text-decoration:none}
+    .btn.primary{
+      border-color:rgba(0,0,0,.28);
+      background:rgba(255,255,255,.28);
+      font-weight:600;
+    }
+
+    h1{
+      font-size:34px;
+      margin:22px 0 8px;
+      letter-spacing:-0.2px;
+    }
+    .lead{
+      color:var(--muted);
+      font-size:15.5px;
+      line-height:1.7;
+      margin:0 0 18px;
+      max-width: 78ch;
+    }
+
+    /* About-like big stacked cards */
     .card{
+      background:var(--card);
       border:1px solid var(--line);
       border-radius:var(--radius);
-      padding:16px;
-      background:#fff;
+      padding:18px 18px;
+      margin:14px 0;
+      backdrop-filter: blur(2px);
     }
-    .card h2{font-size:16px;margin:0 0 8px}
-    .card p{margin:0 0 10px;color:var(--muted);line-height:1.5}
-    .card ul{margin:0;padding-left:18px;color:var(--muted);line-height:1.55}
+    .card h2{
+      font-size:16px;
+      margin:0 0 10px;
+      font-weight:600;
+    }
+    .card p{
+      margin:0 0 10px;
+      color:var(--muted);
+      line-height:1.65;
+      font-size:14.5px;
+    }
+    .card ul{
+      margin:10px 0 0;
+      padding-left:18px;
+      color:var(--muted);
+      line-height:1.65;
+      font-size:14.5px;
+    }
     .card li{margin:6px 0}
 
-    .divider{height:1px;background:var(--line);margin:18px 0}
-
-    .foot{
-      margin-top:22px;
-      padding-top:14px;
-      border-top:1px solid var(--line);
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.45;
-    }
+    .pillRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
     .pill{
-      display:inline-block;
-      border:1px solid var(--line);
+      border:1px solid rgba(0,0,0,.14);
+      background:rgba(255,255,255,.14);
       border-radius:999px;
       padding:6px 10px;
       font-size:12px;
       color:var(--muted);
-      margin:6px 6px 0 0;
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+    }
+    @media (min-width: 860px){
+      .split{grid-template-columns: 1fr 1fr}
+      .card.tight{margin:0} /* for split rows */
+    }
+
+    .footer{
+      margin-top:18px;
+      padding-top:14px;
+      border-top:1px solid rgba(0,0,0,.10);
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.5;
+    }
+
+    /* Small helper: make bold numbers pop without looking like a different design system */
+    .bigNumber{
+      font-weight:700;
+      color:#111;
+      letter-spacing:0.2px;
     }
   </style>
 </head>
@@ -90,142 +151,136 @@
   <div class="wrap">
 
     <header class="top">
-      <div class="brand">
-        <a href="index.html" title="Back to home">
-          <!-- Use the same exact logo file you use on Research/About -->
-          <img class="miniLogo" src="assets/arctiser-logo.png" alt="ARCTISER logo">
-        </a>
-      </div>
+      <a href="index.html" title="Back to home">
+        <!-- IMPORTANT: use the SAME logo file/path you use on About/Research -->
+        <img class="miniLogo" src="assets/arctiser-logo.png" alt="ARCTISER logo">
+      </a>
 
-      <nav class="nav" aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a href="research.html">Research</a>
-        <a href="projects.html">Projects</a>
-        <a href="archive.html">Archive</a>
-        <a href="about.html">About</a>
-        <a href="governance.html" aria-current="page">Governance</a>
-      </nav>
+      <div class="actions">
+        <a class="btn primary" href="statutes.html">Statutes / Vedtekter</a>
+        <a class="btn" href="index.html">Home</a>
+      </div>
     </header>
 
     <main>
       <h1>Governance</h1>
-      <p class="sub">
-        How ARCTISER is organized, how decisions are made, and how integrity, transparency, and independence are protected.
+      <p class="lead">
+        ARCTISER is structured to protect analytical independence, enforce transparency, and ensure methodological integrity.
+        Governance exists to keep the institute stable, credible, and resistant to external narrative pressure.
       </p>
 
-      <div class="grid">
+      <div class="card">
+        <h2>Core principles</h2>
+        <p>Our governance is guided by three operational principles:</p>
+        <ul>
+          <li><strong>Methodological integrity</strong> — clear assumptions, transparent sourcing, explicit limitations.</li>
+          <li><strong>Institutional independence</strong> — separation between funding and conclusions.</li>
+          <li><strong>Practical relevance</strong> — outputs designed to be actionable without sacrificing rigor.</li>
+        </ul>
+      </div>
 
-        <section class="card">
+      <div class="split">
+        <section class="card tight">
           <h2>Organization</h2>
           <p>
-            ARCTISER – Arctic Institute for Independent Social Research is organized as a non-profit association with a
-            defined purpose, statutes (vedtekter), and a board responsible for oversight.
+            ARCTISER is organized as a Norway-registered, non-profit association with statutes (vedtekter) and a board
+            responsible for oversight.
           </p>
-          <div class="pill">Non-profit association</div>
-          <div class="pill">Independent research focus</div>
-          <div class="pill">Norway (Brønnøysund)</div>
+          <div class="pillRow">
+            <span class="pill">Non-profit association</span>
+            <span class="pill">Independent research focus</span>
+            <span class="pill">Norway (Brønnøysund)</span>
+          </div>
         </section>
 
-        <section class="card">
-          <h2>Registration</h2>
+        <section class="card tight">
+          <h2>Legal and registration information</h2>
+          <p>Registered organization number:</p>
+          <p class="bigNumber">937 265 212</p>
           <p>
-            Registered organization number:
-          </p>
-          <p style="margin:0;font-weight:600;color:#111;">
-            937 265 212
-          </p>
-          <p style="margin-top:10px;">
             Official records and filings are maintained in the Norwegian registry (Brønnøysundregistrene).
           </p>
         </section>
-
-        <section class="card">
-          <h2>Board and roles</h2>
-          <p>
-            The board provides oversight and ensures ARCTISER follows its purpose, ethical standards, and statutory obligations.
-          </p>
-          <ul>
-            <li><strong>Chair:</strong> [Name]</li>
-            <li><strong>Board member:</strong> [Name]</li>
-            <li><strong>Board member:</strong> [Name]</li>
-            <li><strong>Day-to-day operations:</strong> [Role / Name]</li>
-          </ul>
-          <p style="margin-top:10px;">
-            (Replace placeholders when you want—this page is structured so you can drop in names safely.)
-          </p>
-        </section>
-
-        <section class="card">
-          <h2>Decision-making</h2>
-          <p>
-            Decisions follow the association’s statutes and documented routines to reduce ambiguity and protect independence.
-          </p>
-          <ul>
-            <li>Board meetings are documented (agenda + minutes).</li>
-            <li>Major changes (purpose, governance, finances) require formal approval.</li>
-            <li>Public-facing statements and publications follow review rules.</li>
-          </ul>
-        </section>
-
-        <section class="card">
-          <h2>Integrity and independence</h2>
-          <p>
-            ARCTISER aims to protect research integrity by separating funding from conclusions and documenting methodology.
-          </p>
-          <ul>
-            <li>No sponsor may influence research conclusions.</li>
-            <li>Methodology and limitations are disclosed in publications.</li>
-            <li>Conflicts of interest are declared.</li>
-          </ul>
-        </section>
-
-        <section class="card">
-          <h2>Conflicts of interest</h2>
-          <p>
-            Anyone involved in governance or research must disclose relevant interests that could bias decisions or results.
-          </p>
-          <ul>
-            <li>Financial interests (contracts, ownership, paid roles)</li>
-            <li>Close personal relationships relevant to a decision</li>
-            <li>Prior involvement that could compromise neutrality</li>
-          </ul>
-        </section>
-
-        <section class="card">
-          <h2>Transparency</h2>
-          <p>
-            ARCTISER will publish key documents and updates as part of normal operations.
-          </p>
-          <ul>
-            <li>Statutes (vedtekter) and governance overview</li>
-            <li>High-level funding sources (when relevant)</li>
-            <li>Publications and archived research PDFs</li>
-          </ul>
-        </section>
-
-        <section class="card">
-          <h2>Complaints and corrections</h2>
-          <p>
-            If a publication contains errors, ARCTISER will document and publish corrections transparently.
-          </p>
-          <ul>
-            <li><strong>Corrections:</strong> logged on the relevant research page / PDF entry</li>
-            <li><strong>Complaints:</strong> handled by board review when necessary</li>
-          </ul>
-          <p style="margin-top:10px;">
-            Contact: <strong>[your-email@domain]</strong>
-          </p>
-        </section>
-
       </div>
 
-      <div class="divider"></div>
+      <section class="card">
+        <h2>Board and roles</h2>
+        <p>
+          The board provides oversight and ensures ARCTISER follows its purpose, ethical standards, and statutory obligations.
+        </p>
+        <ul>
+          <li><strong>Chair:</strong> [Name]</li>
+          <li><strong>Board member:</strong> [Name]</li>
+          <li><strong>Board member:</strong> [Name]</li>
+          <li><strong>Day-to-day operations:</strong> [Role / Name]</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Decision-making</h2>
+        <p>
+          Decisions follow the association’s statutes and documented routines to reduce ambiguity and protect independence.
+        </p>
+        <ul>
+          <li>Board meetings are documented (agenda + minutes).</li>
+          <li>Major changes (purpose, governance, finances) require formal approval.</li>
+          <li>Public-facing statements and publications follow internal review rules.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Integrity and independence</h2>
+        <p>
+          ARCTISER protects research integrity by separating funding from conclusions and documenting methodology.
+        </p>
+        <ul>
+          <li>No sponsor may influence research conclusions.</li>
+          <li>Methodology and limitations are disclosed in publications.</li>
+          <li>Conflicts of interest are declared and managed.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Conflicts of interest</h2>
+        <p>
+          Anyone involved in governance or research must disclose relevant interests that could bias decisions or results.
+        </p>
+        <ul>
+          <li>Financial interests (contracts, ownership, paid roles)</li>
+          <li>Close personal relationships relevant to a decision</li>
+          <li>Prior involvement that could compromise neutrality</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Transparency</h2>
+        <p>ARCTISER publishes key documents and updates as part of normal operations.</p>
+        <ul>
+          <li>Statutes (vedtekter) and governance overview</li>
+          <li>High-level funding sources (when relevant)</li>
+          <li>Publications and archived research PDFs</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Complaints and corrections</h2>
+        <p>
+          If a publication contains errors, ARCTISER documents and publishes corrections transparently.
+        </p>
+        <ul>
+          <li><strong>Corrections:</strong> logged on the relevant research page / archive entry</li>
+          <li><strong>Complaints:</strong> handled through board review when necessary</li>
+        </ul>
+        <p style="margin-top:10px;">
+          Contact: <strong>[your-email@domain]</strong>
+        </p>
+      </section>
 
       <section class="card">
         <h2>Data protection and privacy</h2>
         <p>
-          ARCTISER aims to minimize personal data collection. If contact forms, newsletters, or analytics are used,
-          a simple privacy notice will be provided describing what is collected and why.
+          ARCTISER minimizes personal data collection. If contact forms, newsletters, or analytics are used,
+          a short privacy notice will describe what is collected and why.
         </p>
         <ul>
           <li>Data minimization by default</li>
@@ -234,10 +289,10 @@
         </ul>
       </section>
 
-      <footer class="foot">
+      <div class="footer">
         <div><strong>ARCTISER – Arctic Institute for Independent Social Research</strong></div>
         <div>Org. no. 937 265 212 • Norway</div>
-      </footer>
+      </div>
     </main>
 
   </div>
