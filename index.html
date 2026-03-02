@@ -188,11 +188,13 @@
       background:#f7f7f7;
       border-color:#ddd;
     }
-    .logoImg{
-  height:28vh;
-  width:auto;
+   .logoImg{
+  height: 28vh;          
+  width: auto;           
+  max-width: 92vw;       
   display:block;
   margin:0 auto;
+  object-fit: contain;   
 }
 /* --- Mobile responsiveness (index only) --- */
 img{max-width:100%;height:auto}
@@ -356,7 +358,8 @@ img{max-width:100%;height:auto}
 
           <div class="logoBlock">
             <!-- Replace with <img src="assets/arctiser-logo.png" alt="ARCTISER logo" style="height:36vh;max-height:420px;width:auto;"> when you upload -->
-            <img src="assets/arctiser-logo.png" alt="ARCTISER logo" class="logoImg">
+            <img src="assets/arctiser-logo.png" alt="ARCTISER logo"
+     style="height:28vh;width:auto;max-width:92vw;display:block;margin:0 auto;object-fit:contain;">
             <p class="sub">Advancing evidence-based understanding of society.</p>
           </div>
 
