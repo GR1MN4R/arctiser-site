@@ -194,7 +194,71 @@
   display:block;
   margin:0 auto;
 }
+/* --- Mobile responsiveness (index only) --- */
+img{max-width:100%;height:auto}
 
+/* Safer padding on small screens */
+@media (max-width: 560px){
+  .wrap{padding-left:16px; padding-right:16px;}
+
+  /* HERO: logo should scale but not explode */
+  .heroLogo{
+    width: min(92vw, 520px);
+    height: auto;
+  }
+
+  /* If you used height-based sizing instead of width */
+  .logo{
+    height: auto;
+    max-height: 28vh;
+    width: min(92vw, 520px);
+  }
+
+  /* Buttons: stack, full width */
+  .btnRow,
+  .buttons,
+  .navBtns{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    width:100%;
+  }
+  .btnRow a,
+  .buttons a,
+  .navBtns a,
+  .btn{
+    width:100%;
+    text-align:center;
+    justify-content:center;
+  }
+
+  /* Research preview card: reduce padding */
+  .researchPreview,
+  .feature,
+  .currentProject{
+    padding:14px;
+  }
+
+  /* Modal: use almost-full width and scroll if tall */
+  .modal,
+  .popup{
+    width: calc(100vw - 32px);
+    max-width: 520px;
+    max-height: 80vh;
+    overflow:auto;
+  }
+
+  /* Modal inner spacing */
+  .modalContent,
+  .popupContent{
+    padding:16px;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 380px){
+  .tagline{font-size:14px}
+}
     /* Footer */
     footer{
       border-top:1px solid var(--line);
