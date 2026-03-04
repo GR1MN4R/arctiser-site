@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Archive – ARCTISER</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#fff; --text:#111; --muted:#555; --line:#eaeaea;
+      --max: 980px;
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+    .wrap{max-width:var(--max);margin:0 auto;padding:28px 20px}
+
+    header{border-bottom:1px solid var(--line)}
+    .top{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:2px 0}
+    .brand{display:flex;flex-direction:column;gap:2px}
+    .tagline{color:var(--muted);font-size:13px;line-height:1.4}
+    .miniLogo{height:72px;width:auto;display:block}
+
+    .nav a{
+      color:var(--text);
+      text-decoration:none;
+      border:1px solid var(--line);
+      padding:10px 12px;
+      border-radius:12px;
+      font-weight:500;
+      font-size:14px;
+      margin-left:8px;
+    }
+    .nav a:first-child{margin-left:0}
+    .nav a:hover{background:#f7f7f7}
+
+    main{padding:26px 0 30px}
+    h1{font-size:28px;margin:0 0 10px;font-weight:600;letter-spacing:.01em}
+    p{margin:0 0 12px;color:var(--muted);line-height:1.7}
+
+    .card{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      background:#fff;
+      margin-top:14px;
+    }
+
+    .card h2{
+      margin:0 0 10px;
+      font-size:16px;
+      font-weight:600;
+      color:var(--text);
+    }
+
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px 18px;
+      margin-top:10px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.6
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:6px 10px;
+      font-size:12px;
+      color:var(--muted);
+      background:#fff;
+    }
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:18px 0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.6
+    }
+    footer a{color:inherit}
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">
+        <img src="assets/arctiser-logo.png" alt="ARCTISER logo" class="miniLogo">
+        <span class="tagline">Advancing evidence-based understanding of society.</span>
+      </div>
+      <div class="nav">
+        <a href="/">Home</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <h1>Archive</h1>
+
+    <p>
+      The archive contains published research outputs, analytical briefs, and supporting
+      materials produced by ARCTISER. Documents are listed chronologically and remain
+      publicly accessible for transparency and reference.
+    </p>
+
+    <div class="card">
+
+      <div class="meta" style="margin-top:0">
+        <span class="tag">Publications</span>
+        <span class="tag">Reports</span>
+        <span class="tag">Research briefs</span>
+      </div>
+
+      <h2>Research publications</h2>
+
+      <p>
+        No publications have been released yet. When research outputs are finalized,
+        they will appear here with links to downloadable documents and relevant
+        project references.
+      </p>
+
+      <div class="meta">
+        <div><strong>Status:</strong> Awaiting first publication</div>
+      </div>
+
+    </div>
+
+    <div class="card">
+
+      <h2>Archive log</h2>
+
+      <p>
+        This section will maintain a chronological log of released materials, including
+        earlier versions of reports, working papers, and archived project documentation
+        where appropriate.
+      </p>
+
+      <div class="meta">
+        <div><strong>Entries:</strong> None yet</div>
+      </div>
+
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>ARCTISER – Arctic Institute for Independent Social Research</div>
+    <div>Registered in Norway · Organization No: 937 265 212 · <a href="mailto:research@arctiser.no">research@arctiser.no</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
