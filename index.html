@@ -404,11 +404,11 @@ img{max-width:100%;height:auto}
               <p class="featuredLabel">Current Research</p>
               <p class="featuredMeta"><span id="crType">Research Report</span> · <span id="crDate">2026-02-08</span></p>
             </div>
-<p class="featuredSeries">ARCTISER Research Report 2026-001</p>
+            <p class="featuredSeries">ARCTISER Research Report 2026-001</p>
             <h2 class="featuredTitle" id="crTitle">The Bachelor Burden</h2>
             <p class="featuredAbstract" id="crAbstract">
               Pilot comparison of science degree structures in Norway and an EU reference case, examining course segmentation,
-              average ECTS per module, and curriculum architecture across Biology, Chemistry, and Pharmaceutics.
+              average ECTS per module, and curriculum architecture across Biology, Chemistry, and Pharmacy.
             </p>
 
             <div class="featuredActions">
@@ -594,5 +594,36 @@ Transparency and replicability are guiding principles in our publication process
       if(e.key === 'Escape') closeModal();
     });
   </script>
+  <script>
+async function loadLatestPublication() {
+  try {
+    const res = await fetch('/publications.json', { cache: 'no-store' });
+    if (!res.ok) return;
+
+    const publications = await res.json();
+    if (!Array.isArray(publications) || publications.length === 0) return;
+
+    const latest = publications[0];
+
+    const typeEl = document.getElementById('crType');
+    const dateEl = document.getElementById('crDate');
+    const titleEl = document.getElementById('crTitle');
+    const abstractEl = document.getElementById('crAbstract');
+    const pdfEl = document.getElementById('crPdf');
+    const pageEl = document.getElementById('crPage');
+
+    if (typeEl && latest.type) typeEl.textContent = latest.type;
+    if (dateEl && latest.date) dateEl.textContent = latest.date;
+    if (titleEl && latest.title) titleEl.textContent = latest.title;
+    if (abstractEl && latest.abstract) abstractEl.textContent = latest.abstract;
+    if (pdfEl && latest.pdf) pdfEl.href = latest.pdf;
+    if (pageEl && latest.page) pageEl.href = latest.page;
+  } catch (err) {
+    console.log('Latest publication could not be loaded.', err);
+  }
+}
+
+loadLatestPublication();
+</script>
 </body>
 </html>
